@@ -1,0 +1,225 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Reveal.JS Template for Week 13</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/sky.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+
+		<!-- Import Vega -->
+		<script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Weekly Assignment 11</h3>
+					
+				</section>
+
+
+				<section>
+					<section>
+					<div id="vis0"></div>
+	
+					<script type="text/javascript">
+					
+						var spec = {
+						  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+						  "width": 600,
+						  "height": 500,
+						  "data": {"url": "https://vega.github.io/vega-datasets/data/seattle-weather.csv"},
+						  "mark": "bar",
+						  "encoding": {
+						    "x": {
+						      "timeUnit": "month",
+						      "field": "date",
+						      "type": "ordinal",
+						      "title": "Month of the year"
+						    },
+						    "y": {
+						      "aggregate": "count",
+						      "type": "quantitative"
+						    },
+						    "color": {
+						      "field": "weather",
+						      "type": "nominal",
+						      "scale": {
+						        "domain": ["sun", "fog", "drizzle", "rain", "snow"],
+						        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+						      },
+						      "title": "Weather type"
+						    }
+						  }
+						};
+						
+					
+						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+					
+						vegaEmbed("#vis0", spec, opt);
+					
+					</script>
+					</section>
+
+					<section>
+						<h3> Code</h3>
+
+						<pre><code data-trim data-line-numbers=1|2|3-30|31|32><script type="text/template">
+					<div id="vis0"></div>
+					<script type="text/javascript">
+						var spec = {
+						  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+						  "width": 600,
+						  "height": 500,
+						  "data": {"url": "https://vega.github.io/vega-datasets/data/seattle-weather.csv"},
+						  "mark": "bar",
+						  "encoding": {
+						    "x": {
+						      "timeUnit": "month",
+						      "field": "date",
+						      "type": "ordinal",
+						      "title": "Month of the year"
+						    },
+						    "y": {
+						      "aggregate": "count",
+						      "type": "quantitative"
+						    },
+						    "color": {
+						      "field": "weather",
+						      "type": "nominal",
+						      "scale": {
+						        "domain": ["sun", "fog", "drizzle", "rain", "snow"],
+						        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+						      },
+						      "title": "Weather type"
+						    }
+						  }
+						};
+						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+						vegaEmbed("#vis0", spec, opt);
+						</script></code></pre>
+					</section>
+					<section>
+						<h3> Interpretation</h3>
+						<p> This graph represents the weather patterns in seattle in different months. There are signifcantly more sunny instances in summer months and much less rain in the months of July and August. This weather is congruent with standard northern hemisphere weather patterns. </p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+					<div id="vis1"></div>
+	
+					<script type="text/javascript">
+					
+						var spec = {
+						  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+						  "data": {
+						    "url": "https://vega.github.io/vega-datasets/data/disasters.csv"
+						  },
+						  "width": 600,
+						  "height": 400,
+						  "transform": [
+						    {"filter": "datum.Entity !== 'All natural disasters'"}
+						  ],
+						  "mark": {
+						    "type": "circle",
+						    "opacity": 0.8,
+						    "stroke": "black",
+						    "strokeWidth": 1
+						  },
+						  "encoding": {
+						    "x": {
+						      "field": "Year",
+						      "type": "temporal",
+						      "axis": {"grid": false}
+						    },
+						    "y": {"field": "Entity", "type": "nominal", "axis": {"title": ""}},
+						    "size": {
+						      "field": "Deaths",
+						      "type": "quantitative",
+						      "title": "Annual Global Deaths",
+						      "legend": {"clipHeight": 30},
+						      "scale": {"rangeMax": 5000}
+						    },
+						    "color": {"field": "Entity", "type": "nominal", "legend": null}
+						  }
+						};
+						
+					
+						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+					
+						vegaEmbed("#vis1", spec, opt);
+					
+					</script>
+					</section>
+					
+					<section>
+						<h3>Code</h3>
+						<pre><code data-trim data-line-numbers=1|2|3-30|31|32><script type="text/template">
+					<div id="vis0"></div>
+					<script type="text/javascript">
+						var spec = {
+						  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+						  "width": 600,
+						  "height": 500,
+						  "data": {"url": "https://vega.github.io/vega-datasets/data/disasters.csv"},
+						  "mark": "bar",
+						  "encoding": {
+						    "x": {
+						      "timeUnit": "month",
+						      "field": "date",
+						      "type": "ordinal",
+						      "title": "Month of the year"
+						    },
+						    "y": {
+						      "aggregate": "count",
+						      "type": "quantitative"
+						    },
+						    "color": {
+						      "field": "weather",
+						      "type": "nominal",
+						      "scale": {
+						        "domain": ["sun", "fog", "drizzle", "rain", "snow"],
+						        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+						      },
+						      "title": "Weather type"
+						    }
+						  }
+						};
+						var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+						vegaEmbed("#vis0", spec, opt);
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Interpretation</h3>
+						<p>There is a lot going on in the graph but the most interesting part to me is the Epidemic line. This shows a lot of deaths due to epidemics up until 1930 when it dramatically drops off. This is an interesting view of when modern medicine improved enough to better fight viral epidemics. It would be interesting to see what the Covid-19 pandemic would appear as on the graph. </p>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'h/v',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>
