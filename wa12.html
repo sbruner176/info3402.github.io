@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Weekly Assignment 12</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/moon.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+
+		<!-- Loading Vega-->
+		<script src="https://cdn.jsdelivr.net/npm/vega@5.19.1"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.0.0"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.15.1"></script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Weekly Assignment 12</h3>
+					
+				</section>
+				
+				<section>
+					<section>
+						<h2>Visualiztion 1</h2>
+
+						<div id="vis-point"></div>
+						<script type="text/javascript">
+						var spec = {
+							"width": 600,
+							"height": 450,
+							"config": {"font":"times new roman"},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/penguins.json"
+							},
+							"mark": "point",
+							"encoding": {
+							    
+							    "x": {
+							      "field": "Flipper Length (mm)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "y": {
+							      "field": "Body Mass (g)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "color": {"field": "Sex", "type": "nominal"},
+							    "shape": {"field": "Species", "type": "nominal"}
+							  }
+						};
+						var opt = {"renderer": "canvas", "actions": false};
+						vegaEmbed("#vis-point", spec, opt);
+						</script>
+						
+					</section>
+
+					<section>
+						<h2>Interpretation</h2>
+						<p> The visualization shows a positive relationship between Flipper Length and Body Mass. Gentoo penguins have both the biggest flipper length and the biggest body mass.</p>
+					</section>
+
+					<section>
+						<h2>Code</h2>
+						<pre><code data-trim data-line-numbers=2,3|4><script type="text/template">
+							var spec = {
+							"width": 600,
+							"height": 450,
+							"config": {"font":"times new roman"},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/penguins.json"
+							},
+							"mark": "point",
+							"encoding": {
+							    "x": {
+							      "field": "Flipper Length (mm)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "y": {
+							      "field": "Body Mass (g)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "color": {"field": "Sex", "type": "nominal"},
+							    "shape": {"field": "Species", "type": "nominal"}
+							  }
+						};
+
+						</script></code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Visualization 2</h2>
+						<div id="vis-point2"></div>
+						<script type="text/javascript">
+						var spec = {
+							"width": 200,
+							"height": 300,
+							"config": {"font":"times new roman"},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/penguins.json"
+							},
+							"mark": "point",
+							"encoding": {
+							    "facet": {"field":"Species","type":"nominal"},
+							    "x": {
+							      "field": "Flipper Length (mm)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "y": {
+							      "field": "Body Mass (g)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "color": {"field": "Sex", "type": "nominal"},
+							    
+							  }
+						};
+						var opt = {"renderer": "canvas", "actions": false};
+						vegaEmbed("#vis-point2", spec, opt);
+						</script>
+					</section>
+
+					<section>
+						<h2>Interpretation</h2>
+						<p> Both the Adelie and Gentoo penguins have more continuity of flipper length between male and female than the chinstrap penguin. The chinstrap penguin has both smaller flipper length and body mass for female penguins.</p>
+					</section>
+
+					<section>
+						<h2>Code</h2>
+						<pre><code data-trim data-line-numbers=10|21><script type="text/template">
+							var spec = {
+							"width": 200,
+							"height": 300,
+							"config": {"font":"times new roman"},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/penguins.json"
+							},
+							"mark": "point",
+							"encoding": {
+							    "facet": {"field":"Species","type":"nominal"},
+							    "x": {
+							      "field": "Flipper Length (mm)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "y": {
+							      "field": "Body Mass (g)",
+							      "type": "quantitative",
+							      "scale": {"zero": false}
+							    },
+							    "color": {"field": "Sex", "type": "nominal"},
+							    
+							  }
+						};
+						</script></code></pre>
+					</section>
+				</section>
+
+				
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'h/v',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>
