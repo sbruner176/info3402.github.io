@@ -15,8 +15,23 @@
 
     <title>Weekly Assignment 13</title>
   </head>
-  <body>
-    <h1>DogeCoin</h1>
+
+  <style>
+  	#intro {
+  	background-image: url("https://fotos.perfil.com/2021/04/21/trim/950/534/dogecoin-1161750.jpg");}
+  </style>
+
+  <body id="intro">
+
+    <h1 class="text-center text-white">DogeCoin</h1>
+    	
+    <div class="container-fluid bg-warning bg-gradient">
+    	<p>DogeCoin is a cryptocurrency which has seen a surge in recent activity. Its recent success heralds a future in which cryptocurrencies, no matter how seemingly silly, will have a significant amount of use and impact in the economic world. While they increase in popularity and, the carbon footprint of a cryptocurrency also increases in a significant way which could seriously undermine the movement to renewable energy.</p>
+    	<p>The cryptocurrency, DogeCoin, has increased in usage very recently. As the first graph shows, the volume of DogeCoin stock being traded has rapidly increased in the last few months. This has happened in response to multiple different factors, but it shows how cryptocurrencies that were previously viewed as jokes and memes have the potential to create changes in markets. DogeCoin is a powerful indicator of what the future of cryptocurrencies may be like. There will likely be many different cryptocurrencies that vary over time in their use and prevalence in modern society. Since DogeCoin has been successful recently, other potential and already made cryptocurrencies will likely be seen as having a greater potential for legitimate forms of monetary exchange. It remains to be seen if the volume of DogeCoin trading will increase, decrease, or stay constant and this future data could help streamline predictions about the future of cryptocurrencies.</p>
+    	<p>As the use of Cryptocurrencies increases, the amount of carbon emissions needed to maintain operation of cryptocurrencies also increases. The bitcoin energy consumption graph shows the increase in power needed for the operation of bitcoin. According to research, the carbon footprint of bitcoin alone in 2021 is the same as the entire city of London. This carbon footprint mostly comes from the electrical input needed to mine bitcoin which has become an incredibly energy intensive operation. The energy needed to continue mining bitcoin is likely to increase. It takes more energy to mine every new bitcoin than the last bitcoin mined because the more bitcoin there is the longer it takes to mine new bitcoin. The trend of increasing carbon footprint is applicable to cryptocurrencies other than bitcoin. Increases in the price and usage of cryptocurrencies increases the carbon footprint they have.</p>
+    	<p>As has been spoken about before, there is an increase of the usage of DogeCoin recently, which is indicative of an increase in usage of other cryptocurrencies in the future. As cryptocurrency usage increases the carbon footprint created by electrical input will also increase. Combined these to factors predict a future in which the carbon footprint created by cryptocurrencies will increase significantly in the future. The energy usage of cryptocurrency is likely to rival entire countries usage of energy since it is already the same usage as large cities. This energy consumption will make it more difficult to convert the world energy use from coal and gas power plants to more sustainable energy plants. The increase in electrical footprint likely to happen in the future poses a serious risk to reducing the carbon emissions around the world. </p>
+    	<p>It is important to continue tracking both cryptocurrency price and usage as well as electrical input in the future. In order to plan for a more sustainable future, cryptocurrencies must be accounted for so that enough renewable power infrastructure can be built to handle the demand for cryptocurrencies in the future. </p>
+	</div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -26,29 +41,48 @@
     <div class="container">
   
 	  <div class="row">
-	    <div class="col-7">
-	    	<p>1</p>
-	    	<p>2</p>
-	    	<p>3</p>
-	    	<p>4</p>
-	    	<p>5</p>
-	    </div>
-	    <div class="col-5">
-	    	<div id="vis-point2"></div>
+	    <div class="col">
+			<div id="vis-point2"></div>
 			<script type="text/javascript">
 			var spec = {
 			  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-			  "description": "Stock prices of 5 Tech Companies over Time.",
-			  "data": {"name": "table","source": "DOGE-USD.csv"},
+			  "description": "Stock prices of  DogeCoin over Time.",
+			  "width": 400,
+			  "height": 300,
+			  "title": "DogeCoin Historical Volume Data",
+			  "data": {"url":"https://sbruner176.github.io/DOGE-USD.csv"},
 			  "mark": "line",
 			  "encoding": {
-			    "x": {"field": "date", "type": "temporal"},
-			    "y": {"field": "volume", "type": "quantitative"},
-			    "color": {"field": "symbol", "type": "nominal"}
+			    "x": {"field": "Date", "type": "temporal"},
+			    "y": {"field": "Volume", "type": "quantitative"},
+			    
 			  }
 			}
 			var opt = {"renderer": "canvas", "actions": false};
 			vegaEmbed("#vis-point2", spec, opt);
+			</script>
+	    </div>
+	    <div class="col">
+	    	
+
+			<div id="vis-point1"></div>
+			<script type="text/javascript">
+			var spec = {
+			  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+			  "description": "Bitcoin energy consumption",
+			 "width": 400,
+			  "height": 300,
+			  "title": "Bitcoin Energy Consumption",
+			  "data": {"url":"https://sbruner176.github.io/bitcoin_electricity_consumption.csv"},
+			  "mark": "line",
+			  "encoding": {
+			    "x": {"field": "Date and Time", "type": "temporal"},
+			    "y": {"field": "GUESS", "type": "quantitative","title":"TWh"},
+			    
+			  }
+			}
+			var opt = {"renderer": "canvas", "actions": false};
+			vegaEmbed("#vis-point1", spec, opt);
 			</script>
 	    </div>
 	  </div>
